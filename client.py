@@ -56,7 +56,7 @@ def start_mc_client():
     time_ms = end_time - start_time # Time to receive message 
 
     # Print out our info
-    info('Multicast', time_ms, client_socket.getsockname()[0], mcast_group, addr[0], mcast_port, 'UDP', len(message))
+    info('Multicast', time_ms, client_socket.getsockname()[0], MCAST_GRP, addr[0], MCAST_PORT, 'UDP', len(message))
     # Decode message show it was received
     print(f"Received multicast message: {message.decode()}")
 
