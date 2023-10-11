@@ -1,16 +1,16 @@
 import socket
 import time
 
-def info(packet_type, time_ms, src_ip, src_port, dest_ip, dest_port, protocol, length, flags=None):
+def info(packet_t, time_ms, src_ip, src_p, dest_ip, dest_p, pc, l, flags=None):
     #prints network logs to terminal
-    print(f"Type: {packet_type}")
+    print(f"Type: {packet_t}")
     print(f"Time (ms): {time_ms}")
     print(f"Source IP: {src_ip}")
-    print(f"Source Port: {src_port}")
+    print(f"Source Port: {src_p}")
     print(f"Destination IP: {dest_ip}")
-    print(f"Destination Port: {dest_port}")
-    print(f"Protocol: {protocol}")
-    print(f"Length: {length} bytes")
+    print(f"Destination Port: {dest_p}")
+    print(f"Protocol: {pc}")
+    print(f"Length: {l} bytes")
     if flags:
         print(f"Flags: {flags}")
     print("----")
