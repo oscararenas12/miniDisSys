@@ -3,7 +3,7 @@ services:
   server:
     build:
       context: .
-      dockerfile: Dockerfile_server
+      dockerfile: Dockerfile_master
     ports:
       - "12345:12345" #this is for broadcast
       - "5007:5007/udp"  # This is for the multicast
