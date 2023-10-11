@@ -13,7 +13,7 @@
             - client.py
             - master.py
             - Dockerfile_client
-            - Dockerfile_server
+            - Dockerfile_master
             - docker-compose.yml
 
 (Note: Files must be named exactly as seen above.)
