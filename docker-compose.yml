@@ -1,0 +1,45 @@
+version: '3'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile_server
+    ports:
+      - "12345:12345" #this is for broadcast
+      - "5007:5007/udp"  # This is for the multicast
+
+  client1:
+    build:
+      context: .
+      dockerfile: Dockerfile_client
+    depends_on:
+      - server
+    volumes: 
+      - ./data:/app/mysite
+
+  client2:
+    build:
+      context: .
+      dockerfile: Dockerfile_client
+    depends_on:
+      - server
+    volumes: 
+      - ./data:/app/mysite
+
+  client3:
+    build:
+      context: .
+      dockerfile: Dockerfile_client
+    depends_on:
+      - server
+    volumes: 
+      - ./data:/app/mysite
+
+  client4:
+    build:
+      context: .
+      dockerfile: Dockerfile_client
+    depends_on:
+      - server
+    volumes: 
+      - ./data:/app/mysite
