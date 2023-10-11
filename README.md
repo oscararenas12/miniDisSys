@@ -1,9 +1,14 @@
 
 # CECS 327 Group Project 1: A Bite of Distributed Communication
 
+## Preconditions
+        - Must run Linux OS
+        - Must have Docker installed
+        - Must have Docker account
+
 ## Compiling and Testing Instructions
     
-    1. Ensure the following files are located in the same file directory: 
+1. Ensure the following files are located in the same file directory: 
     
             - client.py
             - server.py
@@ -15,15 +20,15 @@
 
             cd [folder_name]
 
-    2. Login to Docker using the command:
+    3. Login to Docker using the command:
 
             sudo docker login 
 
-    3. Build the Docker images and run the containers by running the command:
+    4. Build the Docker images and run the containers by running the command:
 
             sudo docker-compose up --build
 
-    4. Terminate and remove the containers and network with the command: 
+    5. Terminate and remove the containers and network with the command: 
 
             sudo docker-compose down
     
