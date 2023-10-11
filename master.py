@@ -37,13 +37,13 @@ def start_bc_master():
 
 def start_mc_master():
     # Defines IP address and port number for multicast group
-    MCAST_GRP = '224.1.1.1'
-    MCAST_PORT = 5007
+    mcast_group = '224.1.1.1'
+    mcast_port = 5007
     master_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     message = b"Multicast message from the master!"
     # Sends a multicast message to the clients registered in the group
-    master_socket.sendto(message, (MCAST_GRP, MCAST_PORT))
+    master_socket.sendto(message, (mcast_group, mcast_port))
     master_socket.close()  # Closes the master socket 
 
 if __name__ == "__main__":
