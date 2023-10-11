@@ -2,9 +2,9 @@
 # CECS 327 Group Project 1: A Bite of Distributed Communication
 
 ## Preconditions
-        - Must run Linux OS
-        - Must have Docker installed
-        - Must have Docker account
+            - Must run Linux OS
+            - Must have Docker installed
+            - Must have Docker account
 
 ## Compiling and Testing Instructions
     
