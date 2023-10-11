@@ -11,7 +11,7 @@
 1. Ensure the following files are located in the same file directory: 
     
             - client.py
-            - server.py
+            - master.py
             - Dockerfile_client
             - Dockerfile_server
             - docker-compose.yml
