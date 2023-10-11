@@ -16,19 +16,21 @@
             - Dockerfile_server
             - docker-compose.yml
 
-    2. Make sure the current working directory of the terminal is set to where all the files are located.
+(Note: Files must be named exactly as seen above.)
+
+2. Make sure the current working directory of the terminal is set to where all the files are located.
 
             cd [folder_name]
 
-    3. Login to Docker using the command:
+3. Login to Docker using the command:
 
             sudo docker login 
 
-    4. Build the Docker images and run the containers by running the command:
+4. Build the Docker images and run the containers by running the command:
 
             sudo docker-compose up --build
 
-    5. Terminate and remove the containers and network with the command: 
+5. Terminate and remove the containers and network with the command: 
 
             sudo docker-compose down
     
