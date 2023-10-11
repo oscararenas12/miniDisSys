@@ -28,7 +28,7 @@ def start_bc_client():
     
     client_socket.connect((host, port)) # Connecting master node to port
     start_time = time.time() * 1000  # Starting time in ms
-    message = client_socket.recv(1024) # Receives a messge in 1024 byte size
+    message = client_socket.recv(1024) # Receives a message in 1024 byte size
     end_time = time.time() * 1000  # Ending time in ms
     time_ms = end_time - start_time # Time to receive message
 
@@ -47,17 +47,19 @@ def start_mc_client():
     client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # Allows client_socket to bind to address and port
     client_socket.bind((MCAST_GRP, MCAST_PORT)) # Makes client_ready to receive muiltcast communication
 
-    mreq = socket.inet_aton(MCAST_GRP) + socket.inet_aton('0.0.0.0')
-    client_socket.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+    mreq = socket.inet_aton(MCAST_GRP) + socket.inet_aton('0.0.0.0') 
+    client_socket.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq) # will allow socket to join muiltcast group
 
-    start_time = time.time() * 1000  # Start time in ms
-    message, addr = client_socket.recvfrom(1024)
-    end_time = time.time() * 1000  # End time in ms
-    time_ms = end_time - start_time # time to receive message 
+    start_time = time.time() * 1000  # Starting time in ms
+    message, addr = client_socket.recvfrom(1024) # Receives a message in 1024 byte size
+    end_time = time.time() * 1000  # Ending time in ms
+    time_ms = end_time - start_time # Time to receive message 
 
+    # Print out our info
     info('Multicast', time_ms, client_socket.getsockname()[0], MCAST_GRP, addr[0], MCAST_PORT, 'UDP', len(message))
+    # Decode message show it was received
     print(f"Received multicast message: {message.decode()}")
 
 if __name__ == "__main__":
-    start_bc_client()
-    start_mc_client()
+    start_bc_client() # Starting broadcast in main
+    start_mc_client() # Starting muiltcast in main
