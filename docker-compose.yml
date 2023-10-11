@@ -1,4 +1,6 @@
-# Reference: http://karunsubramanian.com/uncategorized/creating-a-distributed-service-using-docker-a-beginners-guide/
+# References: 
+# http://karunsubramanian.com/uncategorized/creating-a-distributed-service-using-docker-a-beginners-guide/
+# https://docs.docker.com/get-started/08_using_compose/
 
 version: '3'
 services:
