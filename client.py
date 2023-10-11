@@ -1,7 +1,7 @@
 import socket
 import time
 
-def print_info(packet_type, src_ip, src_port, dest_ip, dest_port, protocol, length, flags=None):
+def info(packet_type, src_ip, src_port, dest_ip, dest_port, protocol, length, flags=None):
     timestamp = int(time.time() * 1000)  # Time in milliseconds
     print(f"Type: {packet_type}")
     print(f"Time (ms): {timestamp}")
@@ -28,20 +28,20 @@ def print_info(packet_type, src_ip, src_port, dest_ip, dest_port, protocol, leng
     #results.close()
     #return 0  
 
-def start_broadcast_client():
+def start_bc_client():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host = 'server'  # Modify this according to your server's address
+    host = 'master'  # Modify this according to your server's address
     port = 12345
 
     
     client_socket.connect((host, port))
     message = client_socket.recv(1024)
-    print_info('Broadcast', client_socket.getsockname()[0], client_socket.getsockname()[1], client_socket.getpeername()[0], client_socket.getpeername()[1], 'TCP', len(message))
+    info('Broadcast', client_socket.getsockname()[0], client_socket.getsockname()[1], client_socket.getpeername()[0], client_socket.getpeername()[1], 'TCP', len(message))
 
     print(f"Received broadcast message: {message.decode()}")
     client_socket.close()
 
-def start_multicast_client():
+def start_mc_client():
     MCAST_GRP = '224.1.1.1'
     MCAST_PORT = 5007
 
@@ -54,9 +54,9 @@ def start_multicast_client():
     client_socket.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
 
     message, addr = client_socket.recvfrom(1024)
-    print_info('Multicast', client_socket.getsockname()[0], MCAST_GRP, addr[0], MCAST_PORT, 'UDP', len(message))
+    info('Multicast', client_socket.getsockname()[0], MCAST_GRP, addr[0], MCAST_PORT, 'UDP', len(message))
     print(f"Received multicast message: {message.decode()}")
 
 if __name__ == "__main__":
-    start_broadcast_client()
-    start_multicast_client()
+    start_bc_client()
+    start_mc_client()
