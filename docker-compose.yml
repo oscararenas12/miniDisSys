@@ -1,3 +1,5 @@
+# Reference: http://karunsubramanian.com/uncategorized/creating-a-distributed-service-using-docker-a-beginners-guide/
+
 version: '3'
 services:
   master:
@@ -14,8 +16,6 @@ services:
       dockerfile: Dockerfile_client
     depends_on:
       - master
-    volumes: 
-      - ./data:/app/mysite
 
   client2:
     build:
@@ -23,8 +23,6 @@ services:
       dockerfile: Dockerfile_client
     depends_on:
       - master
-    volumes: 
-      - ./data:/app/mysite
 
   client3:
     build:
@@ -32,8 +30,6 @@ services:
       dockerfile: Dockerfile_client
     depends_on:
       - master
-    volumes: 
-      - ./data:/app/mysite
 
   client4:
     build:
@@ -41,5 +37,3 @@ services:
       dockerfile: Dockerfile_client
     depends_on:
       - master
-    volumes: 
-      - ./data:/app/mysite
