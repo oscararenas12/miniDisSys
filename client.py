@@ -1,3 +1,9 @@
+# References:
+# https://www.geeksforgeeks.org/socket-programming-python/
+# https://www.youtube.com/watch?app=desktop&v=3QiPPX-KeSc
+# https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
+# https://www.youtube.com/watch?v=LnvxObLYO-o
+
 import socket
 import time
 
