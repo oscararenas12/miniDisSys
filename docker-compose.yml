@@ -1,6 +1,6 @@
 version: '3'
 services:
-  server:
+  master:
     build:
       context: .
       dockerfile: Dockerfile_master
@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: Dockerfile_client
     depends_on:
-      - server
+      - master
     volumes: 
       - ./data:/app/mysite
 
@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: Dockerfile_client
     depends_on:
-      - server
+      - master
     volumes: 
       - ./data:/app/mysite
 
@@ -31,7 +31,7 @@ services:
       context: .
       dockerfile: Dockerfile_client
     depends_on:
-      - server
+      - master
     volumes: 
       - ./data:/app/mysite
 
@@ -40,6 +40,6 @@ services:
       context: .
       dockerfile: Dockerfile_client
     depends_on:
-      - server
+      - master
     volumes: 
       - ./data:/app/mysite
