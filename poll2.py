@@ -38,7 +38,7 @@ def start_bc_poll2():
     finally:
         print("Final Poll 2 Results:")
         print(f"Yes: {responses['yes']}, No: {responses['no']}")
-        poll1_socket.close()
+        poll2_socket.close()
 
 if __name__ == "__main__":
     start_bc_poll2()

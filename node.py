@@ -19,9 +19,9 @@ def start_bc_node():
     print(f"Connecting to {poll_choice}")
 
     if poll_choice == 'poll1':
-        interact_with_master('poll1', 12345)
+        interact_with_poll('poll1', 12345)
     else:
-        interact_with_master('poll2', 12346)
+        interact_with_poll('poll2', 12346)
 
 if __name__ == "__main__":
     start_bc_node()
