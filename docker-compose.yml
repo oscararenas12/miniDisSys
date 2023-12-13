@@ -9,15 +9,15 @@ services:
       context: .
       dockerfile: Dockerfile_poll1
     ports:
-      - "12345:12345" #this is for broadcast
-      - "5007:5007/udp"  # This is for the multicast
+      - "12345:12345"
+      - "5007:5007/udp"
   poll2:
     build:
       context: .
-      dockerfile: Dockerfile_poll2  # Use Dockerfile_master if the setup is the same
+      dockerfile: Dockerfile_poll2
     ports:
-      - "12346:12345"  # Use different external port
-      - "5008:5007/udp"  # Use different external port for multicast, if needed
+      - "12346:12345"
+      - "5008:5007/udp"
 
   node1:
     build:

@@ -9,6 +9,7 @@ def interact_with_poll(host, port):
         print(poll_question)
 
         response = random.choice(["yes", "no"])
+        print(f"Chosen response: {response}")
         node_socket.sendall(response.encode())
 
         final_results = node_socket.recv(1024).decode()
