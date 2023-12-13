@@ -7,14 +7,14 @@ services:
   master:
     build:
       context: .
-      dockerfile: Dockerfile_master
+      dockerfile: Dockerfile_poll1
     ports:
       - "12345:12345" #this is for broadcast
       - "5007:5007/udp"  # This is for the multicast
   master2:
     build:
       context: .
-      dockerfile: Dockerfile_master2  # Use Dockerfile_master if the setup is the same
+      dockerfile: Dockerfile_poll2  # Use Dockerfile_master if the setup is the same
     ports:
       - "12346:12345"  # Use different external port
       - "5008:5007/udp"  # Use different external port for multicast, if needed
@@ -22,31 +22,31 @@ services:
   client1:
     build:
       context: .
-      dockerfile: Dockerfile_client
+      dockerfile: Dockerfile_node
     depends_on:
-      - master
-      - master2
+      - poll1
+      - poll2
 
   client2:
     build:
       context: .
-      dockerfile: Dockerfile_client
+      dockerfile: Dockerfile_node
     depends_on:
-      - master
-      - master2
+      - poll1
+      - poll2
 
   client3:
     build:
       context: .
-      dockerfile: Dockerfile_client
+      dockerfile: Dockerfile_node
     depends_on:
-      - master
-      - master2
+      - poll1
+      - poll2
 
   client4:
     build:
       context: .
-      dockerfile: Dockerfile_client
+      dockerfile: Dockerfile_node
     depends_on:
-      - master
-      - master2
+      - poll1
+      - poll2
