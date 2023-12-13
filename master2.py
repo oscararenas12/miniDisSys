@@ -4,7 +4,7 @@ import random
 def start_bc_master():
     master_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host = '0.0.0.0'
-    port = 12345
+    port = 12346
     master_socket.bind((host, port))
     master_socket.listen(4)
     print(f"Listening for connections on {host}:{port}...")
@@ -18,7 +18,7 @@ def start_bc_master():
             print(f"Connection from {addr} established!")
             clients.append(client_socket)
 
-        poll_question = "Do you like Python? (yes/no)"
+        poll_question = "Do you like Python2? (yes/no)"
         for client in clients:
             client.sendall(poll_question.encode())
 
@@ -26,14 +26,14 @@ def start_bc_master():
             response = client.recv(1024).decode().lower()
             if response in responses:
                 responses[response] += 1
-
-            results_msg = f"Master 1 Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}"
+                
+            results_msg = f" Master 2 Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}"
             client.sendall(results_msg.encode())
             # Display results after each vote
             # print(f"Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}")
 
     finally:
-        print("Master 1 Final Poll Results:")
+        print("Master 2 Final Poll Results:")
         print(f"Yes: {responses['yes']}, No: {responses['no']}")
         for client in clients:
             client.close()

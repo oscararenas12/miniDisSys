@@ -11,6 +11,13 @@ services:
     ports:
       - "12345:12345" #this is for broadcast
       - "5007:5007/udp"  # This is for the multicast
+  master2:
+    build:
+      context: .
+      dockerfile: Dockerfile_master2  # Use Dockerfile_master if the setup is the same
+    ports:
+      - "12346:12345"  # Use different external port
+      - "5008:5007/udp"  # Use different external port for multicast, if needed
 
   client1:
     build:
@@ -18,6 +25,7 @@ services:
       dockerfile: Dockerfile_client
     depends_on:
       - master
+      - master2
 
   client2:
     build:
@@ -25,6 +33,7 @@ services:
       dockerfile: Dockerfile_client
     depends_on:
       - master
+      - master2
 
   client3:
     build:
@@ -32,6 +41,7 @@ services:
       dockerfile: Dockerfile_client
     depends_on:
       - master
+      - master2
 
   client4:
     build:
@@ -39,3 +49,4 @@ services:
       dockerfile: Dockerfile_client
     depends_on:
       - master
+      - master2
