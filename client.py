@@ -1,13 +1,12 @@
 import socket
-import time
 import random
 
-def start_bc_client():
+def connect_to_master(host, port):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host = 'master'
-    port = 12345
     client_socket.connect((host, port))
+    return client_socket
 
+def interact_with_master(client_socket):
     poll_question = client_socket.recv(1024).decode()
     print(poll_question)
 
@@ -20,6 +19,15 @@ def start_bc_client():
     print(poll_results)
 
     client_socket.close()
+
+def start_bc_client():
+    # Connect and interact with the first master
+    master1_socket = connect_to_master('master', 12345)
+    interact_with_master(master1_socket)
+
+    # Connect and interact with the second master
+    master2_socket = connect_to_master('master2', 12346)  # Assuming master2 is on a different port
+    interact_with_master(master2_socket)
 
 if __name__ == "__main__":
     start_bc_client()

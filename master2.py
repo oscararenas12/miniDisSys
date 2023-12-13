@@ -18,7 +18,7 @@ def start_bc_master():
             print(f"Connection from {addr} established!")
             clients.append(client_socket)
 
-        poll_question = "Do you like Python? (yes/no)"
+        poll_question = "Do you like Python2? (yes/no)"
         for client in clients:
             client.sendall(poll_question.encode())
 
@@ -27,13 +27,13 @@ def start_bc_master():
             if response in responses:
                 responses[response] += 1
                 
-            results_msg = f"Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}"
+            results_msg = f" Master 2 Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}"
             client.sendall(results_msg.encode())
             # Display results after each vote
             # print(f"Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}")
 
     finally:
-        print("Final Poll Results:")
+        print("Master 2 Final Poll Results:")
         print(f"Yes: {responses['yes']}, No: {responses['no']}")
         for client in clients:
             client.close()

@@ -26,14 +26,14 @@ def start_bc_master():
             response = client.recv(1024).decode().lower()
             if response in responses:
                 responses[response] += 1
-                
-            results_msg = f"Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}"
+
+            results_msg = f"Master 1 Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}"
             client.sendall(results_msg.encode())
             # Display results after each vote
             # print(f"Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}")
 
     finally:
-        print("Final Poll Results:")
+        print("Master 1 Final Poll Results:")
         print(f"Yes: {responses['yes']}, No: {responses['no']}")
         for client in clients:
             client.close()
