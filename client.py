@@ -21,13 +21,17 @@ def interact_with_master(client_socket):
     client_socket.close()
 
 def start_bc_client():
-    # Connect and interact with the first master
-    master1_socket = connect_to_master('master', 12345)
-    interact_with_master(master1_socket)
+    # Randomly choose a master to vote on
+    master_choice = random.choice(['master', 'master2'])
+    
+    if master_choice == 'master':
+        print("Connecting to master")
+        master_socket = connect_to_master('master', 12345)
+    else:
+        print("Connecting to master2")
+        master_socket = connect_to_master('master2', 12346)  # Assuming master2 is on a different port
 
-    # Connect and interact with the second master
-    master2_socket = connect_to_master('master2', 12346)  # Assuming master2 is on a different port
-    interact_with_master(master2_socket)
+    interact_with_master(master_socket)
 
 if __name__ == "__main__":
     start_bc_client()
