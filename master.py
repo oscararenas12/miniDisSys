@@ -1,43 +1,51 @@
+# References:
+# https://www.geeksforgeeks.org/socket-programming-python/
+# https://www.youtube.com/watch?app=desktop&v=3QiPPX-KeSc
+# https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
+# https://www.youtube.com/watch?v=LnvxObLYO-o
+
 import socket
-import random
 
 def start_bc_master():
+    # Create a socket for the master node 
     master_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host = '0.0.0.0'
     port = 12345
+    # Bind the server to the specified IP address and port number
     master_socket.bind((host, port))
+    # Master node listens for 4 connections
     master_socket.listen(4)
     print(f"Listening for connections on {host}:{port}...")
 
-    clients = []
-    responses = {"yes": 0, "no": 0}
+    clients = []  # Empty list to store connected clients
 
     try:
         for i in range(4):
-            client_socket, addr = master_socket.accept()
+            # Master node accepts connection request from a client
+            client_socket, addr = master_socket.accept() 
             print(f"Connection from {addr} established!")
             clients.append(client_socket)
+        
+        for client in clients: # Send the broadcast message to all connected clients
+            message = b"Broadcast message from the master!"
+            client.sendall(message)
 
-        poll_question = "Do you like Python? (yes/no)"
-        for client in clients:
-            client.sendall(poll_question.encode())
-
-        for client in clients:
-            response = client.recv(1024).decode().lower()
-            if response in responses:
-                responses[response] += 1
-
-            results_msg = f"Master 1 Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}"
-            client.sendall(results_msg.encode())
-            # Display results after each vote
-            # print(f"Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}")
-
-    finally:
-        print("Master 1 Final Poll Results:")
-        print(f"Yes: {responses['yes']}, No: {responses['no']}")
+    finally: # Closes all connections after broadcast
         for client in clients:
             client.close()
         master_socket.close()
 
+def start_mc_master():
+    # Defines IP address and port number for multicast group
+    mcast_group = '224.1.1.1'
+    mcast_port = 5007
+    master_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    message = b"Multicast message from the master!"
+    # Sends a multicast message to the clients registered in the group
+    master_socket.sendto(message, (mcast_group, mcast_port))
+    master_socket.close()  # Closes the master socket 
+
 if __name__ == "__main__":
     start_bc_master()
+    start_mc_master()
