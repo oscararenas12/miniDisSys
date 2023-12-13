@@ -19,14 +19,14 @@ def start_bc_poll1():
                 print(f"Connection from {addr} established!")
 
                 # Handle client interaction
-                poll_question = "Master 1 Do you like Python? (yes/no)"
+                poll_question = "(Poll 1) Do you like Dogs? (yes/no)"
                 node_socket.sendall(poll_question.encode())
                 response = node_socket.recv(1024).decode().lower()
                 if response in responses:
                     responses[response] += 1
 
                 # Send final results to client
-                final_results = f"Master 1 Current Poll Results: Yes: {responses['yes']}, No: {responses['no']}"
+                final_results = f" Current Poll 1 Results: Yes: {responses['yes']}, No: {responses['no']}"
                 node_socket.sendall(final_results.encode())
 
                 # Close client connection
@@ -36,7 +36,7 @@ def start_bc_poll1():
                 break  # Break out of the loop if no new connections within timeout
 
     finally:
-        print("Master 1 Final Poll Results:")
+        print("Final Poll 1 Results:")
         print(f"Yes: {responses['yes']}, No: {responses['no']}")
         poll1_socket.close()
 
