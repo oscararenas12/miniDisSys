@@ -36,9 +36,10 @@ def start_bc_poll2():
                 break  # Break out of the loop if no new connections within timeout
 
     finally:
+        # print final results
         print("Final Poll 2 Results:")
         print(f"Yes: {responses['yes']}, No: {responses['no']}")
-        poll2_socket.close()
+        poll2_socket.close() # closes poll2 connection
 
 if __name__ == "__main__":
     start_bc_poll2()

@@ -19,50 +19,50 @@ services:
       - "12346:12345"
       - "5008:5007/udp"
 
-  node1:
+  voter1:
     build:
       context: .
-      dockerfile: Dockerfile_node
+      dockerfile: Dockerfile_voter
     depends_on:
       - poll1
       - poll2
 
-  node2:
+  voter2:
     build:
       context: .
-      dockerfile: Dockerfile_node
+      dockerfile: Dockerfile_voter
     depends_on:
       - poll1
       - poll2
 
-  node3:
+  voter3:
     build:
       context: .
-      dockerfile: Dockerfile_node
+      dockerfile: Dockerfile_voter
     depends_on:
       - poll1
       - poll2
 
-  node4:
+  voter4:
     build:
       context: .
-      dockerfile: Dockerfile_node
+      dockerfile: Dockerfile_voter
     depends_on:
       - poll1
       - poll2
 
-  node5:
+  voter5:
     build:
       context: .
-      dockerfile: Dockerfile_node
+      dockerfile: Dockerfile_voter
     depends_on:
       - poll1
       - poll2
 
-  node6:
+  voter6:
     build:
       context: .
-      dockerfile: Dockerfile_node
+      dockerfile: Dockerfile_voter
     depends_on:
       - poll1
       - poll2

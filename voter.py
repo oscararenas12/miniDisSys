@@ -22,7 +22,7 @@ def interact_with_poll(host, port):
         final_results = node_socket.recv(1024).decode()
         print(final_results)
 
-def start_bc_node():
+def start_bc_voter():
     # randomly chooses which poll to connect to (poll1 or poll2)
     poll_choice = random.choice(['poll1', 'poll2'])
     print(f"Connecting to {poll_choice}")
@@ -34,4 +34,4 @@ def start_bc_node():
 
 # main to run everything 
 if __name__ == "__main__":
-    start_bc_node()
+    start_bc_voter()
