@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY master2.py /app
 
-CMD ["python", "master2.py"]
+CMD ["python", "poll2.py"]
