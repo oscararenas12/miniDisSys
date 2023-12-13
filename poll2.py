@@ -2,7 +2,7 @@ import socket
 import random
 
 def start_bc_poll2():
-    poll2_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    poll2_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Creates a TCP socket
     host = '0.0.0.0'
     port = 12346
     poll2_socket.bind((host, port))
