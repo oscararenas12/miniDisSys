@@ -15,6 +15,10 @@ def start_bc_client():
     response = random.choice(["yes", "no"])
     client_socket.sendall(response.encode())
 
+    # Receive and print current poll results from master
+    poll_results = client_socket.recv(1024).decode()
+    print(poll_results)
+
     client_socket.close()
 
 if __name__ == "__main__":
