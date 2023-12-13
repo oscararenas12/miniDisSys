@@ -18,18 +18,18 @@ def start_bc_poll2():
                 node_socket, addr = poll2_socket.accept()
                 print(f"Connection from {addr} established!")
 
-                # Handle client interaction
+                # handles node interaction
                 poll_question = "(Poll 2) Do you like Cats? (yes/no)"
                 node_socket.sendall(poll_question.encode())
                 response = node_socket.recv(1024).decode().lower()
                 if response in responses:
                     responses[response] += 1
 
-                # Send final results to client
+                # sends final results to the node
                 final_results = f"Current Poll 2 Results: Yes: {responses['yes']}, No: {responses['no']}"
                 node_socket.sendall(final_results.encode())
 
-                # Close client connection
+                # close node connection
                 node_socket.close()
 
             except socket.timeout:

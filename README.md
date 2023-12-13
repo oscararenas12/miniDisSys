@@ -1,5 +1,5 @@
 
-# CECS 327 Group Project 1: A Bite of Distributed Communication
+# CECS 327 Group Project 2: Voting Poll Distributed System
 
 ## Preconditions
             - Must run Linux OS
@@ -10,10 +10,12 @@
     
 1. Ensure the following files are located in the same file directory: 
     
-            - client.py
-            - master.py
-            - Dockerfile_client
-            - Dockerfile_master
+            - node.py
+            - poll1.py
+            - poll2.py
+            - Dockerfile_node
+            - Dockerfile_poll1
+            - Dockerfile_poll2
             - docker-compose.yml
 
 (Note: Files must be named exactly as seen above.)
