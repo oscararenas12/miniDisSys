@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY client.py /app
 
-CMD ["python", "client.py"]
+CMD ["python", "node.py"]
